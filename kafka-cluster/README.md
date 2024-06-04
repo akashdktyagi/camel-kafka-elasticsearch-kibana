@@ -7,9 +7,10 @@ Docker Compose: () Due to some reason this was not wokring on my windows PC with
 
 ## For Windows:
 Download Kafka from official place: https://kafka.apache.org/quickstart
-* Run Zookeeper: .\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties
-* Run Kafka: bin/windows/kafka-server-start.bat config/server.properties
-* Create Topic: bin/windows/kafka-topics.bat --create --topic quickstart-events1 --bootstrap-server localhost:9092
+* Run Zookeeper: c:\kafka\bin\windows\zookeeper-server-start.bat c:\kafka\config\zookeeper.properties
+* Run Kafka: c:\kafka\bin/windows/kafka-server-start.bat c:\kafka\config/server.properties
+* Create Topic: c:\kafka\bin/windows/kafka-topics.bat --create --topic quickstart-events1 --bootstrap-server localhost:9092
 * Produce: bin/windows/kafka-console-producer.bat --topic quickstart-events --bootstrap-server localhost:9092
 * UI Can be downloaded from here: https://github.com/obsidiandynamics/kafdrop
   * Clone and Build and run. See the instructions in the Readme file of the project. Use Java command line for executions.
+* For Running UI : ```java --add-opens=java.base/sun.nio.ch=ALL-UNNAMED -jar kafka-cluster/kafdrop-4.0.2-SNAPSHOT.jar -kafka.brokerConnect=localhost:9002```

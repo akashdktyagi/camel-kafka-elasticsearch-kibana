@@ -1,12 +1,10 @@
 package com.tdoc.po;
 
-import lombok.extern.log4j.Log4j2;
 import lombok.extern.slf4j.Slf4j;
 import org.assertj.core.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
 import java.util.List;
 
 @Slf4j
@@ -20,8 +18,6 @@ public class CommonPageObjects {
     private final String productTitles = "//div[@data-cy='title-recipe']";
 
     private final String searchCategoriesCheckbox = "//span[@class='a-size-base a-color-base' and text()='%s']/preceding-sibling::div/label/i";
-
-
 
     public CommonPageObjects(WebDriver driver) {
         this.driver = driver;

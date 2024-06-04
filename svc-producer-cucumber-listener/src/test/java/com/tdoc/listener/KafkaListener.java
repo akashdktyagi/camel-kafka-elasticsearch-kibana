@@ -33,13 +33,16 @@ public class KafkaListener implements ConcurrentEventListener {
 
         camelContext = new DefaultCamelContext();
         ComponentsBuilderFactory.kafka().register(camelContext, "kafka");
-//        + System.getProperty("user.dir") + "/
         try {
             camelContext.addRoutes(new RouteBuilder() {
                 @Override
                 public void configure() {
-                    from("file:results?noop=true")
+                    from("file:results?delete=true")
                             .convertBodyTo(String.class)
+                            .process(exchange -> {
+                                String fileName = exchange.getIn().getHeader("CamelFileName", String.class);
+                                exchange.getIn().setHeader("kafka.KEY", fileName);
+                            })
                             .to("kafka:"+topicName+"?brokers="+brokers);
                 }
             });
@@ -112,9 +115,9 @@ public class KafkaListener implements ConcurrentEventListener {
         testStepListString.append("\n Scenario: " + event.getTestCase().getName() + " \n \n");
         testStepListString.append(getTestSteps(event));
 
-        testStepListString.append("\n \n ----------------------------------------------------------");
-        testStepListString.append("\n --------------------  ERROR LOGS  -----------------------");
-        testStepListString.append("\n  ----------------------------------------------------------");
+//        testStepListString.append("\n \n ----------------------------------------------------------");
+//        testStepListString.append("\n --------------------  ERROR LOGS  -----------------------");
+//        testStepListString.append("\n  ----------------------------------------------------------");
         if (event.getResult().getError() !=null){
             testStepListString.append("\n Execution Error Log: \n \n " + Throwables.getStackTraceAsString(event.getResult().getError()));
         }
