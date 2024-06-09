@@ -13,4 +13,5 @@ Download Kafka from official place: https://kafka.apache.org/quickstart
 * Produce: bin/windows/kafka-console-producer.bat --topic quickstart-events --bootstrap-server localhost:9092
 * UI Can be downloaded from here: https://github.com/obsidiandynamics/kafdrop
   * Clone and Build and run. See the instructions in the Readme file of the project. Use Java command line for executions.
-* For Running UI : ```java --add-opens=java.base/sun.nio.ch=ALL-UNNAMED -jar kafka-cluster/kafdrop-4.0.2-SNAPSHOT.jar -kafka.brokerConnect=localhost:9002```
+  * I have kept it in the same folder the whole jar file.
+  * For Running UI at port: 9000 : ```java --add-opens=java.base/sun.nio.ch=ALL-UNNAMED -jar kafka-cluster/kafdrop-4.0.2-SNAPSHOT.jar -kafka.brokerConnect=localhost:9002```
